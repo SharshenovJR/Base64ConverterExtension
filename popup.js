@@ -13,8 +13,7 @@ document.getElementById('fileToBase64').addEventListener('click', function () {
     const reader = new FileReader();
     reader.readAsDataURL(fileInput);
     reader.onload = function () {
-        const base64Result = reader.result.split(',')[1];
-        document.getElementById('base64Output').value = base64Result;
+        document.getElementById('base64Output').value = reader.result.split(',')[1];
     };
     reader.onerror = function () {
         alert("Ошибка чтения файла!");
@@ -27,7 +26,7 @@ document.getElementById('base64ToFile').addEventListener('click', function () {
 
     try {
         let mimeType = 'application/octet-stream';
-        let base64Content = base64Data;
+        let base64Content;
 
         if (base64Data.includes(',')) {
             const parts = base64Data.split(',');
@@ -39,11 +38,15 @@ document.getElementById('base64ToFile').addEventListener('click', function () {
                 mimeType = mimeMatch[1];
             }
         } else {
-            const mimeMatch = base64Data.match(/^data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+);base64,/);
-            if (mimeMatch) {
-                mimeType = mimeMatch[1];
-                base64Content = base64Data.replace(/^data:[a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+;base64,/, '');
+            if (base64Data.startsWith('JVBERi0')) {
+                mimeType = 'application/pdf';
+            } else if (base64Data.startsWith('/9j/')) {
+                mimeType = 'image/jpeg';
+            } else if (base64Data.startsWith('iVBORw0KGg')) {
+                mimeType = 'image/png';
             }
+
+            base64Content = base64Data.replace(/^data:[a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+;base64,/, '');
         }
 
         const extension = mimeType.split('/')[1] || 'txt';
