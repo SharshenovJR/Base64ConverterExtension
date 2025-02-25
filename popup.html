@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base64 Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h2>Base64 Converter</h2>
+
+    <label for="converterSelect">Выберите конвертер:</label>
+    <select id="converterSelect">
+        <option value="fileToBase64">Файл → Base64</option>
+        <option value="base64ToFile">Base64 → Файл</option>
+        <option value="textToBase64">Текст → Base64</option>
+        <option value="base64ToText">Base64 → Текст</option>
+        <option value="textToUrl">Текст → URL</option>
+        <option value="urlToText">URL → Текст</option>
+    </select>
+
+    <div id="fileToBase64Section" class="converter-section">
+        <label for="fileInput">Файл → Base64</label>
+        <input type="file" id="fileInput">
+        <button id="fileToBase64">Конвертировать</button>
+        <label for="base64Output">Результат:</label>
+        <textarea id="base64Output" rows="3" readonly></textarea>
+        <button id="copyBase64Output" class="copy-button">Копировать</button>
+    </div>
+
+    <div id="base64ToFileSection" class="converter-section">
+        <label for="base64Input">Base64 → Файл</label>
+        <textarea id="base64Input" rows="3"></textarea>
+        <button id="base64ToFile">Скачать файл</button>
+    </div>
+
+    <div id="textToBase64Section" class="converter-section">
+        <label for="textInput">Текст → Base64</label>
+        <textarea id="textInput" rows="2"></textarea>
+        <button id="textToBase64">Конвертировать</button>
+        <label for="base64TextOutput">Base64:</label>
+        <textarea id="base64TextOutput" rows="2" readonly></textarea>
+        <button id="copyBase64TextOutput" class="copy-button">Копировать</button>
+    </div>
+
+    <div id="base64ToTextSection" class="converter-section">
+        <label for="base64TextInput">Base64 → Текст</label>
+        <textarea id="base64TextInput" rows="2"></textarea>
+        <button id="base64ToText">Декодировать</button>
+        <label for="textOutput">Текст:</label>
+        <textarea id="textOutput" rows="2" readonly></textarea>
+        <button id="copyTextOutput" class="copy-button">Копировать</button>
+    </div>
+
+    <div id="textToUrlSection" class="converter-section">
+        <label for="urlInput">Текст → URL</label>
+        <textarea id="urlInput" rows="2"></textarea>
+        <button id="textToUrl">Конвертировать</button>
+        <label for="urlOutput">URL:</label>
+        <textarea id="urlOutput" rows="2" readonly></textarea>
+        <button id="copyUrlOutput" class="copy-button">Копировать</button>
+    </div>
+
+    <div id="urlToTextSection" class="converter-section">
+        <label for="urlDecodeInput">URL → Текст</label>
+        <textarea id="urlDecodeInput" rows="2"></textarea>
+        <button id="urlToText">Декодировать</button>
+        <label for="urlDecodeOutput">Текст:</label>
+        <textarea id="urlDecodeOutput" rows="2" readonly></textarea>
+        <button id="copyUrlDecodeOutput" class="copy-button">Копировать</button>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>

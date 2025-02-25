@@ -1,0 +1,89 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 300px;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #5CC1AA;
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 15px;
+    display: block;
+    font-size: 14px;
+}
+
+textarea, input[type="file"], select {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 14px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s;
+}
+
+textarea:focus, input[type="file"]:focus, select:focus {
+    border-color: #5CC1AA;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    background-color: #5CC1AA;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #5CC1AA;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 25px 0;
+}
+
+.converter-section {
+    display: none;
+    margin-top: 25px;
+}
+
+.converter-section label {
+    margin-top: 0;
+}
+
+.converter-section textarea {
+    margin-bottom: 20px;
+}
+
+.converter-section button {
+    margin-top: 10px;
+}
+
+.copy-button {
+    width: auto;
+    padding: 6px 12px;
+    font-size: 12px;
+    margin-top: 5px;
+}
