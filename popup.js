@@ -49,8 +49,6 @@ document.getElementById('base64ToFile').addEventListener('click', function () {
             base64Content = base64Data.replace(/^data:[a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+;base64,/, '');
         }
 
-        const extension = mimeType.split('/')[1] || 'txt';
-
         const byteCharacters = atob(base64Content);
         const byteNumbers = new Array(byteCharacters.length);
         for (let i = 0; i < byteCharacters.length; i++) {
@@ -59,13 +57,20 @@ document.getElementById('base64ToFile').addEventListener('click', function () {
         const byteArray = new Uint8Array(byteNumbers);
         const blob = new Blob([byteArray], { type: mimeType });
 
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = `decoded_file.${extension}`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(link.href);
+        const fileURL = URL.createObjectURL(blob);
+        document.getElementById('filePreview').src = fileURL;
+        document.getElementById('filePreview').style.display = 'block';
+        document.getElementById('downloadFile').style.display = 'block';
+
+        document.getElementById('downloadFile').onclick = function () {
+            const link = document.createElement('a');
+            link.href = fileURL;
+            link.download = `decoded_file.${mimeType.split('/')[1] || 'txt'}`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(link.href);
+        };
     } catch (error) {
         alert("Ошибка декодирования Base64!");
     }
